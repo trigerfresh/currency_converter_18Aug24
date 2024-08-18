@@ -1,0 +1,52 @@
+<html>
+
+<head>
+<title>Motivational Messages</title>
+</head>
+
+<style>
+*{
+font-family : "sans-serif";
+font-size : 40px;
+}
+
+body{
+background : lightblue; 
+}
+</style>
+<body>
+<center>
+
+<h2/>Motivational Msg App
+
+<form onsubmit = "cc()">
+<input type = "number" step = "any" id = "num" placeholder = "Enter number"/><br><br>
+<input type = "submit" value = "Calculate"/>
+</form>
+
+<h2 id = "msg"/>
+
+<script>
+
+function cc(){
+event.preventDefault()
+let msg = document.getElementById("msg");
+let num = document.getElementById("num");
+let n = num.value;
+
+let url = "https://api.exchangerate-api.com/v4/latest/USD";
+
+fetch(url)
+.then(res => res.json())
+.then(data => {
+msg.innerHTML = data.rates.USD *n * 83.88;
+})
+.catch(err=> msg.innerHTML = "issue" +err);
+
+}
+</script>
+
+</center>
+</body>
+
+</html>
